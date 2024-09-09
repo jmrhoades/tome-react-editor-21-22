@@ -1,0 +1,34 @@
+import React, { useContext } from "react";
+import { motion } from "framer-motion";
+import styled from "styled-components";
+
+import { TomeContext } from "../tome/TomeContext";
+
+const Wrap = styled(motion.div)`
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+`;
+
+export const DeselectCatch = props => {
+	const { setSelectedTileID, setPanelOpen, setPanelName } = useContext(TomeContext);
+
+	return (
+		<Wrap
+			onMouseEnter={() => {
+				console.log("Enter, start timer")
+			}}
+			onMouseLeave={() => {
+				console.log("Enter, cancel timer")
+			}}
+			onTap={() => {
+				setSelectedTileID(null);
+				setPanelOpen(false);
+				setPanelName("");
+				// setShowComments(false);
+			}}
+		></Wrap>
+	);
+};
